@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/imageNameView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="@dimen/padding_9"
+        android:hint="Furniture"
+        android:theme="@style/titleStyle" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageNameView"
+        android:layout_marginLeft="@dimen/padding_9"
+        android:layout_marginRight="@dimen/padding_9"
+        android:adjustViewBounds="true"
+        android:elevation="3dp"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/imagePriceView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_margin="@dimen/padding_9"
+        android:layout_toRightOf="@+id/imageNameView"
+        android:hint="$200"
+        android:theme="@style/priceStyle" />
+
+
+</RelativeLayout>

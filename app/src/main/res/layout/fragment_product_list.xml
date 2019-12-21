@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/padding_15"
+    tools:context=".View.ProductListFragment">
+
+
+    <TextView
+        android:id="@+id/furnitureHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_9"
+        android:text="@string/funrniture_head"
+        android:theme="@style/headerTextStyle" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/furnitureRecyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+
+
+    <TextView
+        android:id="@+id/electronicsHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/electronics_head"
+        android:layout_marginTop="@dimen/padding_9"
+        android:layout_marginBottom="@dimen/padding_9"
+        android:theme="@style/headerTextStyle" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/electronicsRecyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+</LinearLayout>
