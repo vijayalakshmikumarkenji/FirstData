@@ -1,40 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/product_view"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/border"
     android:orientation="vertical">
 
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/image_size"
+        android:layout_height="@dimen/image_size"
+        android:layout_margin="@dimen/padding_12"
+        android:adjustViewBounds="true"
+        android:background="@android:color/white"
+        android:elevation="3dp" />
+
     <TextView
         android:id="@+id/imageNameView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_margin="@dimen/padding_9"
+        android:layout_marginLeft="@dimen/padding_12"
+        android:layout_marginRight="@dimen/padding_12"
         android:hint="Furniture"
         android:theme="@style/titleStyle" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageNameView"
-        android:layout_marginLeft="@dimen/padding_9"
-        android:layout_marginRight="@dimen/padding_9"
-        android:adjustViewBounds="true"
-        android:elevation="3dp"
-        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/imagePriceView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
-        android:layout_margin="@dimen/padding_9"
-        android:layout_toRightOf="@+id/imageNameView"
+        android:layout_margin="@dimen/padding_12"
         android:hint="$200"
         android:theme="@style/priceStyle" />
 
 
-</RelativeLayout>
+</LinearLayout>

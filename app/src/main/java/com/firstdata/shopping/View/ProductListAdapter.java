@@ -8,11 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.firstdata.shopping.Model.Database.Product;
 import com.firstdata.shopping.R;
+import com.firstdata.shopping.ShoppingApplication;
+import com.squareup.otto.Bus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +25,24 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     Context mContext;
     List<Product> mProductList = new ArrayList<>();
 
+    Bus mBus;
+
     public ProductListAdapter(Context context, List<Product> productList) {
         this.mContext = context;
         this.mProductList = productList;
+        mBus = ShoppingApplication.bus;
+    }
+
+    @Override
+    public void onViewAttachedToWindow(@NonNull CustomHolder holder) {
+        super.onViewAttachedToWindow(holder);
+        mBus.register(this);
+    }
+
+    @Override
+    public void onDetachedFromRecyclerView(@NonNull RecyclerView recyclerView) {
+        super.onDetachedFromRecyclerView(recyclerView);
+        mBus.unregister(this);
     }
 
     @NonNull
@@ -38,7 +56,15 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomHolder customHolder, int i) {
+    public void
+    onBindViewHolder(@NonNull CustomHolder customHolder,final int i) {
+
+        customHolder.mProductView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mBus.post(new OnProductClickedEvent(mProductList.get(i).getUid()));
+            }
+        });
 
         Uri uri = Uri.parse(mProductList.get(i).getImage());
         Glide.with(mContext)
@@ -47,7 +73,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
                 .error(R.drawable.ic_launcher_foreground) //error
                 .into(customHolder.mProductImage);
         customHolder.mProductNameView.setText(mProductList.get(i).getName());
-        customHolder.mProductPrice.setText(String.valueOf(mProductList.get(i).getPrice()));
+        customHolder.mProductPrice.setText("₹" + String.valueOf(mProductList.get(i).getPrice()));
 
     }
 
@@ -61,13 +87,28 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         private ImageView mProductImage;
         private TextView mProductNameView;
         private TextView mProductPrice;
+        private LinearLayout mProductView;
 
         public CustomHolder(@NonNull View itemView) {
             super(itemView);
+            mProductView = (LinearLayout) itemView.findViewById(R.id.product_view);
             mProductImage = (ImageView) itemView.findViewById(R.id.imageView);
             mProductNameView = (TextView) itemView.findViewById(R.id.imageNameView);
             mProductPrice = (TextView) itemView.findViewById(R.id.imagePriceView);
 
+        }
+    }
+
+    public static final class OnProductClickedEvent {
+        public Long productUid;
+
+        public OnProductClickedEvent(Long uid) {
+            this.productUid = uid;
+
+        }
+
+        public Long getProductUid() {
+            return productUid;
         }
     }
 }
