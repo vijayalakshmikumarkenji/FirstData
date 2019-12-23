@@ -10,4 +10,6 @@ public interface IProductPresenter {
 */
     public void getProductList();
 
+    public void getCartCountFromPresenter();
+
 }

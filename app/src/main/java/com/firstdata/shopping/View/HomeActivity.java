@@ -1,11 +1,17 @@
 package com.firstdata.shopping.View;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.firstdata.shopping.Model.Database.Product;
@@ -16,6 +22,7 @@ import com.firstdata.shopping.ShoppingApplication;
 import com.squareup.otto.Subscribe;
 
 import java.util.List;
+import java.util.zip.Inflater;
 
 public class HomeActivity extends AppCompatActivity implements IViewInterface, IProductClickView {
     public static final int FRAGMENT_CONTAINER = R.id.fragment_container;
@@ -36,6 +43,12 @@ public class HomeActivity extends AppCompatActivity implements IViewInterface, I
         mProductPresenter = new ProductPresenterImpl(this);
         mProductClickPresenter = new ProductClickPresentImpl(this);
         mProductPresenter.getProductList();
+    }
+
+    
+    @Override
+    public void getCartItemCount(Long cartItemCount) {
+
     }
 
 

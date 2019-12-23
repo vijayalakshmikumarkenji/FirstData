@@ -9,5 +9,6 @@ public interface IViewInterface {
     public void showProgress(String message);
     public void hideProgress();
     public void onRetrieveProductList(List<Product> products);
+    public void getCartItemCount(Long cartItemCount);
 
 }

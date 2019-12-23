@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/padding_15"
-    android:orientation="vertical">
+    android:layout_margin="@dimen/padding_15">
 
     <ScrollView
+        android:id="@+id/root_scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_above="@+id/add_to_cart_view"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/main_product_layout"
@@ -60,6 +61,7 @@
             <TextView
                 android:id="@+id/product_description"
                 android:layout_width="match_parent"
+                android:layout_marginBottom="@dimen/padding_15"
                 android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/padding_12" />
         </LinearLayout>

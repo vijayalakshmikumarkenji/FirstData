@@ -15,4 +15,5 @@ public class ProductClickPresentImpl implements IProductClickPresenter {
     public void onProductClicked(Long uid) {
         mIProductClickView.getProductDetails(ShoppingApplication.getProductData().getProductByUid(uid));
     }
+
 }

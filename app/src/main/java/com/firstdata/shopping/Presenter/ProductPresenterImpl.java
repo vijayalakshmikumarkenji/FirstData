@@ -19,6 +19,12 @@ public class ProductPresenterImpl implements IProductPresenter {
         this.viewInterface = viewInterface;
     }
 
+    @Override
+    public void getCartCountFromPresenter() {
+        Long cartItemCount = 0L;
+         viewInterface.getCartItemCount(cartItemCount);
+
+    }
 
     @Override
     public void getProductList() {

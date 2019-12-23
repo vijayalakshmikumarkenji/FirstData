@@ -4,7 +4,8 @@ import android.widget.FrameLayout;
 
 import com.firstdata.shopping.R;
 
-public class BaseView {
+public interface BaseView {
 
+    public void getActionBarTitle();
 
 }
