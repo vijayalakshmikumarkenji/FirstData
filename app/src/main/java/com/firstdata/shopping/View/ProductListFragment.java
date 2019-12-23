@@ -1,3 +1,19 @@
+/*
+ * Copyright 2019 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.firstdata.shopping.View;
 
 import android.content.Context;
@@ -22,6 +38,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * Product list fragment class to show the list of products from json and its action.
+ * <p>
+ * Created  by Vijayalakshmi K K
+ */
 public class ProductListFragment extends Fragment {
     private static final String PRODUCT_LIST_DATA = "productList";
 
@@ -30,7 +51,7 @@ public class ProductListFragment extends Fragment {
     private RecyclerView mFurnitureRecyclerView;
     private RecyclerView mElectronicsRecyclerView;
 
-  //  private OnProductClickedListener mProductClickedListener;
+    //  private OnProductClickedListener mProductClickedListener;
 
     public ProductListFragment() {
         // Required empty public constructor
@@ -63,6 +84,11 @@ public class ProductListFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Method to initialize the recycler view for electronics category.
+     *
+     * @param view view
+     */
     private void setElectronicsRecyclerView(View view) {
         mElectronicsRecyclerView = (RecyclerView) view.findViewById(R.id.electronicsRecyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
@@ -71,6 +97,11 @@ public class ProductListFragment extends Fragment {
         mElectronicsRecyclerView.setAdapter(mElectronicsListAdapter);
     }
 
+    /**
+     * Method to get the list of products by category..
+     *
+     * @param categoryName category name
+     */
     private List<Product> getProductListByCategory(String categoryName) {
         List<Product> products = new ArrayList<>();
         for (int i = 0; i < mProductList.size(); i++) {
@@ -82,6 +113,11 @@ public class ProductListFragment extends Fragment {
     }
 
 
+    /**
+     * Method to initialize the recycler view for furniture category.
+     *
+     * @param view view
+     */
     private void setFurnitureRecyclerView(View view) {
         mFurnitureRecyclerView = (RecyclerView) view.findViewById(R.id.furnitureRecyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager
@@ -91,24 +127,6 @@ public class ProductListFragment extends Fragment {
                 (getActivity(), getProductListByCategory(Constants.FURNITURE));
         mFurnitureRecyclerView.setAdapter(mFurnitureListAdapter);
 
-    }
-
-    /*// TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(String uid) {
-        if (mProductClickedListener != null) {
-            mProductClickedListener.onProductClicked(uid);
-        }
-    }
-*/
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    /*    if (context instanceof OnProductClickedListener) {
-            mProductClickedListener = (OnProductClickedListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnProducClickListener");
-        }*/
     }
 
     @Override
@@ -127,21 +145,7 @@ public class ProductListFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-   //     mProductClickedListener = null;
+        //     mProductClickedListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     *//*
-    public interface OnProductClickedListener {
-        // TODO: Update argument type and name
-        void onProductClicked(String uid);
-    }*/
 }

@@ -1,3 +1,19 @@
+/*
+ * Copyright 2019 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.firstdata.shopping.View;
 
 import android.content.Context;
@@ -20,29 +36,32 @@ import com.squareup.otto.Bus;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Adapter class for showing the product detail and its action.
+ * <p>
+ * Created  by Vijayalakshmi K K
+ */
 public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.CustomHolder> {
 
     Context mContext;
     List<Product> mProductList = new ArrayList<>();
 
-    Bus mBus;
-
     public ProductListAdapter(Context context, List<Product> productList) {
         this.mContext = context;
         this.mProductList = productList;
-        mBus = ShoppingApplication.bus;
     }
 
     @Override
     public void onViewAttachedToWindow(@NonNull CustomHolder holder) {
         super.onViewAttachedToWindow(holder);
-        mBus.register(this);
+        ShoppingApplication.bus.register(this);
     }
 
     @Override
     public void onDetachedFromRecyclerView(@NonNull RecyclerView recyclerView) {
         super.onDetachedFromRecyclerView(recyclerView);
-        mBus.unregister(this);
+        ShoppingApplication.bus.unregister(this);
     }
 
     @NonNull
@@ -57,12 +76,12 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     @Override
     public void
-    onBindViewHolder(@NonNull CustomHolder customHolder,final int i) {
+    onBindViewHolder(@NonNull CustomHolder customHolder, final int i) {
 
         customHolder.mProductView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mBus.post(new OnProductClickedEvent(mProductList.get(i).getUid()));
+                ShoppingApplication.bus.post(new OnProductClickedEvent(mProductList.get(i).getUid()));
             }
         });
 
@@ -82,6 +101,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         return mProductList.size();
     }
 
+    // Holder class for product list rows views.
     public class CustomHolder extends RecyclerView.ViewHolder {
 
         private ImageView mProductImage;
@@ -99,6 +119,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         }
     }
 
+    // Class for the Event to notify product click event from list.
     public static final class OnProductClickedEvent {
         public Long productUid;
 

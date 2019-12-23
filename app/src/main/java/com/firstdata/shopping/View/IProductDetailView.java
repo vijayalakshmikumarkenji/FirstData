@@ -17,19 +17,19 @@
 package com.firstdata.shopping.View;
 
 /**
- * Constant class used to define the constant across application.
+ * View class for product detail view and its action.
  * <p>
  * Created  by Vijayalakshmi K K
  */
-public class Constants {
+public interface IProductDetailView {
 
-    // Category names.
-    public static final String FURNITURE = "Furniture";
-    public static final String ELECTRONICS = "Electronics";
+    //View method to check product is available or not which will be called from presenter.
+    public void isProductAvailableInDB(boolean isProductAvailableInDB);
 
-    //Fragment tag names.
-    public static final String PRODUCT_LIST_FRAGMENT = "Product_List_Fragment";
-    public static final String PRODUCT_DETAIL_FRAGMENT = "Product_Detail_Fragment";
-    public static final String CHECKOUT_FRAGMENT = "Checkout_fragment";
-    public static final String PROGRESS_DIALOGUE_FRAGMENT = "Progress_dialog_fragment";
+    //View method to check product is added or not which will be called from presenter.
+    public void isProductAdded(boolean isProductAdded);
+
+    //View method to get product size which will be called from presenter.
+    public void getCartSize(Long size);
+
 }

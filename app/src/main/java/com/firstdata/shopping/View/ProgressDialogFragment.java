@@ -10,6 +10,12 @@ import android.support.v4.app.BundleCompat;
 import android.support.v4.app.DialogFragment;
 import android.view.KeyEvent;
 
+
+/**
+ * ProgressDialogFragment class for show or hide progress dialog.
+ * <p>
+ * Created  by Vijayalakshmi K K
+ */
 public class ProgressDialogFragment extends DialogFragment {
     public static final String EXTRA_MESSAGE = "progressMessage";
 

@@ -1,3 +1,19 @@
+/*
+ * Copyright 2019 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.firstdata.shopping.Model.Database;
 
 import org.json.JSONArray;
@@ -8,6 +24,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+
+/**
+ * Class for get the input json contains the product data's.
+ * <p>
+ * Created  by Vijayalakshmi K K
+ */
 public class ProductData {
 
     String productJson = "[\n" +
@@ -81,13 +103,25 @@ public class ProductData {
     }
 
 
+    /**
+     * Method to get the list of product from json.
+     *
+     * @return List<Product> list of products
+     */
     public List<Product> getProductsList() {
         return productsList;
     }
 
+
+    /**
+     * Method to get the product by uid.
+     *
+     * @param uid uid of the requested product
+     * @return Product returning the product
+     */
     public Product getProductByUid(Long uid) {
         for (int i = 0; i < productsList.size(); i++) {
-            if (uid ==productsList.get(i).getUid()) {
+            if (uid == productsList.get(i).getUid()) {
                 return productsList.get(i);
             }
         }

@@ -4,6 +4,7 @@
     <dimen name="padding_12">12dp</dimen>
     <dimen name="padding_9">9dp</dimen>
     <dimen name="image_size">200dp</dimen>
+    <dimen name="cart_image_size">100dp</dimen>
     <dimen name="padding_5">5dp</dimen>
 
 

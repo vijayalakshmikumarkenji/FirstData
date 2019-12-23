@@ -18,29 +18,22 @@ package com.firstdata.shopping.Presenter;
 
 import com.firstdata.shopping.Model.Database.Product;
 
-import java.util.List;
 
 /**
- * Interface class home activity and checkout view actions.
+ * Interface class Product detail actions.
  * <p>
  * Created  by Vijayalakshmi K K
  */
-public interface IProductPresenter {
+public interface IProductDetailPresenter {
 
-    // To get the list of products from input json.
-    public void getProductList();
+    //To check whether the requested product is available in DB or not.
+    public void getPRoductAvailableinDB(Product product);
 
-    // To identify tge click action of any product from product list via view action.
-    public void onProductClicked(Long productUid);
+    // To add the product to cart via product detail add to cart click action.
+    public void addProductToCart(Product product);
 
-    // To get the cart count to show in menu from view actions
-    public void getCartCountFromPresenter();
-
-    // To get the list of products when user click on cart menu.
-    public void getCartItemList();
-
-    // To remove the product from DB via view actions from checkout.
-    public void removeProductFromCart(Product product);
+    // To get the cart size
+    public void getCartSize();
 
 
 }
