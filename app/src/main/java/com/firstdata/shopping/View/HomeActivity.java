@@ -62,6 +62,13 @@ public class HomeActivity extends AppCompatActivity implements IViewInterface {
             }
         });
 
+        mCartCountTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mProductPresenter.getCartItemList();
+
+            }
+        });
         mFragmentManager = getSupportFragmentManager();
 
         //showProgress("Getting Product List");
